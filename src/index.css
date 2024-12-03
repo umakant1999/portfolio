@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+  
+    
+}
+body {
+    font-family: 'Roboto', sans-serif;
+   
+}
+.back{
+    background: #1e3c72;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2a5298, #1e3c72);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2a5298, #1e3c72); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+   
+   
+}
+.navbar{
+    background: linear-gradient(112.1deg, rgb(12, 14, 18) 11.4%, rgb(2, 5, 15) 70.2%);}
+    @keyframes gradient-move {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+      
+      .moving-gradient {
+        background: linear-gradient(270deg, #ff7e5f, #feb47b, #86a8e7, #91eae4);
+        background-size: 400% 400%;
+        animation: gradient-move 8s ease infinite;
+        filter: blur(10px);
+      }
+      
