@@ -1,42 +1,15 @@
 import React, { useEffect, useRef } from "react";
-import gsap from "gsap";
+
 
 const App = () => {
-  const first = useRef(null);
-
-  useEffect(() => {
-    if (first.current) {
-      const textContent = first.current.textContent;
-      first.current.innerHTML = textContent
-        .split("")
-        .map((char, index) =>
-          char === " "
-            ? `<span style="display:inline-block; width:0.5em;" key=${index}>&nbsp;</span>`
-            : `<span style="display:inline-block;" key=${index}>${char}</span>`
-        )
-        .join("");
-
-      const letters = first.current.querySelectorAll("span");
-
-      gsap.fromTo(
-        letters,
-        { opacity: 0, y: 50 },
-        {
-          opacity: 1,
-          y: 0,
-          stagger: 0.05,
-          duration: 0.6,
-          ease: "power3.out",
-        }
-      );
-    }
-  }, []);
+  
+      
 
   return (
     <div className="bg-gray-50">
       {/* Header */}
       <header className="flex justify-between items-center px-6 py-4 bg-white shadow-md sticky top-0 z-10">
-        <div ref={first} className="text-2xl font-bold text-blue-600">
+        <div  className="text-2xl font-bold text-blue-600">
           Portfolio
         </div>
         <nav className="hidden md:flex space-x-6">
