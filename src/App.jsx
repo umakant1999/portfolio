@@ -1,15 +1,58 @@
-import React, { useEffect, useRef } from "react";
 
+import React, { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
 
 const App = () => {
-  
-      
+  const first = useRef(null);
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  useEffect(() => {
+    if (first.current) {
+      const textContent = first.current.textContent;
+      first.current.innerHTML = textContent
+        .split("")
+        .map((char, index) =>
+          char === " "
+            ? `<span style="display:inline-block; width:0.5em;" key=${index}>&nbsp;</span>`
+            : `<span style="display:inline-block;" key=${index}>${char}</span>`
+        )
+        .join("");
+
+      const letters = first.current.querySelectorAll("span");
+
+      gsap.fromTo(
+        letters,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          stagger: 0.05,
+          duration: 0.6,
+          ease: "power3.out",
+        }
+      );
+    }
+  }, []);
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(form);
+    // Add your form submission logic here
+  };
 
   return (
     <div className="bg-gray-50">
       {/* Header */}
       <header className="flex justify-between items-center px-6 py-4 bg-white shadow-md sticky top-0 z-10">
-        <div  className="text-2xl font-bold text-blue-600">
+        <div ref={first} className="text-2xl font-bold text-blue-600">
           Portfolio
         </div>
         <nav className="hidden md:flex space-x-6">
@@ -125,15 +168,17 @@ const App = () => {
                 umakantranga47@gmail.com
               </p>
               <p className="text-gray-600 mt-4">
-                <i className="fas fa-map-marker-alt text-blue-600"></i>
-               Delhi , India
+                <i className="fas fa-map-marker-alt text-blue-600"></i> Delhi , India
               </p>
             </div>
-            <form className="w-full md:w-2/3 bg-white p-6 shadow-md rounded-lg">
+            <form onSubmit={handleSubmit} className="w-full md:w-2/3 bg-white p-6 shadow-md rounded-lg">
               <div className="mb-4">
                 <label className="block text-gray-600">Full Name</label>
                 <input
                   type="text"
+                  name="name"
+                  value={form.name}
+                  onChange={handleChange}
                   className="w-full p-2 border border-gray-300 rounded"
                 />
               </div>
@@ -141,12 +186,18 @@ const App = () => {
                 <label className="block text-gray-600">Your Email</label>
                 <input
                   type="email"
+                  name="email"
+                  value={form.email}
+                  onChange={handleChange}
                   className="w-full p-2 border border-gray-300 rounded"
                 />
               </div>
               <div className="mb-4">
                 <label className="block text-gray-600">Message</label>
                 <textarea
+                  name="message"
+                  value={form.message}
+                  onChange={handleChange}
                   className="w-full p-2 border border-gray-300 rounded"
                 ></textarea>
               </div>
@@ -160,7 +211,7 @@ const App = () => {
 
       {/* Footer */}
       <footer className="bg-gray-100 py-4 text-center text-gray-600">
-        © 2024 Umakant. All rights reserved.
+        &copy; 2024 Umakant. All rights reserved.
       </footer>
     </div>
   );
