@@ -122,11 +122,11 @@ const App = () => {
               </p>
               <p className="text-gray-600 mt-4">
                 <i className="fas fa-envelope text-blue-600"></i>{" "}
-                email@example.com
+                umakantranga47@gmail.com
               </p>
               <p className="text-gray-600 mt-4">
-                <i className="fas fa-map-marker-alt text-blue-600"></i> 123
-                Street, City, Country
+                <i className="fas fa-map-marker-alt text-blue-600"></i>
+               Delhi , India
               </p>
             </div>
             <form className="w-full md:w-2/3 bg-white p-6 shadow-md rounded-lg">
